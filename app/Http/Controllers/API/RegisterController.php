@@ -19,6 +19,7 @@ class RegisterController extends BaseController
             'name' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:6',
+           
         ]);
 
         if ($validator->fails()) {
@@ -35,7 +36,7 @@ class RegisterController extends BaseController
     }
 
     public function login(Request $request) :JsonResponse {
-        if (Auth::attemp([
+        if (Auth::attempt([
             'email' => $request->email,
             'password' => $request->password
         ])) {
